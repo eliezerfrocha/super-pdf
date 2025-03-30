@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: metadata_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  extrator:
+    build: .
+    container_name: super_pdf
+    depends_on:
+      - mongo
+      - mysql
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  mongo_data:
+  mysql_data:
