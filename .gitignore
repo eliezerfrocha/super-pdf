@@ -172,6 +172,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+<<<<<<< HEAD
 
 # General
 .DS_Store
@@ -200,3 +201,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+=======
+>>>>>>> 4c0684038de5d699b9d56b5f961c1974a9b0a238
